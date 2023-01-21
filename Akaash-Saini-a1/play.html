@@ -116,15 +116,15 @@
   
         let winner = determineWinner(userChoice, computerChoice);
         if (winner === 'tie') {
-          result.innerHTML += "It's a tie!";
+          alert("It's a tie!");
 
         } else if (winner === 'user') {
-          result.innerHTML += 'You won!';
+          alert('You won!');
         } else {
-          result.innerHTML += 'The computer won.';
+          alert('The computer won.');
         }
         let score = document.getElementById("score");
-        score.innerHTML = `Score: User: ${userWins} Computer: ${computerWins} Ties: ${ties}`;
+        alert(`Score: \nUser: ${userWins} \nComputer: ${computerWins} \nTies: ${ties}`);
         alert(`Score: User: ${userWins} Computer: ${computerWins} Ties: ${ties}`);
         
         let playAgain = confirm("Do you want to play again?");
