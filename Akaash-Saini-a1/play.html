@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Style the body and heading */
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+        margin-top: 50px;
+      }
+      
+      /* Style the button */
+      #play-button {
+        background-color: greenyellow; /* Green-Yellow */
+        border: 5px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 50px;
+      }
+
+      #back-button {
+    background-color: red; /* Red */
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+      }
+
+      /* Style the result and score paragraphs */
+      #result, #score {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+    <title>Assignment 1 for Akaash Saini</title>
+  </head>
+  <body>
+    <h1>Assignment 1</h1><br><hr>
+    <h2>Akaash Saini</h2><hr>
+    <h1>Rock, Paper, Scissors Game</h1> 
+    <button id="play-button" onclick="playGame()">Play</button>
+    <p id="result"></p>
+    <p id="score"></p>
+    <script type="text/javascript">
+            let userWins = 0;
+      let computerWins = 0;
+      let ties = 0;
+      function getComputerChoice() {
+        let choices = ['rock', 'paper', 'scissors'];
+        let Index = Math.floor(Math.random() * choices.length);
+        return choices[Index];
+      }
+  
+      function determineWinner(userChoice, computerChoice) {
+        if (userChoice === computerChoice) {
+          ties++;
+          alert("It's a tie!");
+          return 'tie';
+        } else if (userChoice === 'rock' && computerChoice === 'scissors') {
+          userWins++;
+          alert("You won!");
+          return 'user';
+        } else if (userChoice === 'paper' && computerChoice === 'rock') {
+          userWins++;
+          alert("You won!");
+          return 'user';
+        } else if (userChoice === 'scissors' && computerChoice === 'paper') {
+          userWins++;
+          alert("You won!");
+          return 'user';
+        } else {
+          computerWins++;
+          alert("You lost!");
+          return 'computer';
+        }
+
+      }
+  
+      function playGame() {
+        let userChoice = (prompt('1 for ROCK\n \
+2 for PAPER\n \
+3 for SCISSORS'));
+        
+        if (userChoice < 1 || userChoice > 3) {
+          alert("Invalid input. Please enter a number between 1 and 3.");
+          return;
+        }
+        
+        
+        if (userChoice==1){
+          userChoice='rock'
+        }
+        if (userChoice==2){
+          userChoice='paper'
+        }
+        if (userChoice==3){
+          userChoice= 'scissors'
+        }
+
+
+        let computerChoice = getComputerChoice();
+        let result = document.getElementById("result");
+        alert(`You chose ${userChoice}. Computer chose ${computerChoice}`);
+  
+        let winner = determineWinner(userChoice, computerChoice);
+        if (winner === 'tie') {
+          result.innerHTML += "It's a tie!";
+
+        } else if (winner === 'user') {
+          result.innerHTML += 'You won!';
+        } else {
+          result.innerHTML += 'The computer won.';
+        }
+        let score = document.getElementById("score");
+        score.innerHTML = `Score: User: ${userWins} Computer: ${computerWins} Ties: ${ties}`;
+        alert(`Score: User: ${userWins} Computer: ${computerWins} Ties: ${ties}`);
+        
+        let playAgain = confirm("Do you want to play again?");
+        if (playAgain==true) {
+          playGame();
+        }
+      }      
+    </script>
+    <a href="index.html">
+    <button id="back-button" onclick="location.href='index.html'">Back</button>
+  </a>
+  </body>
+</html>
